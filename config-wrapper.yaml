@@ -1,0 +1,46 @@
+---
+synapse:
+  exports: 
+    id: syn20852283
+    name: External REDCap exports
+    type: folder
+    description: folder containing subfolders containing BPC upload files
+  testing: 
+    id: syn27538188
+    name: External REDCap exports
+    type: folder
+    description: folder containing subfolders containing test upload files
+  reports:
+    id: syn25832316
+    name: QA Check
+    type: folder
+    description: folder containing all QA reports by cohort
+cohorts:
+- BLADDER
+- BrCa
+- CRC
+- NSCLC
+- PANC
+- Prostate
+reports:
+- upload
+- masking
+contacts:
+  DFCI:
+  - hhz
+  - apostle
+  - Ashnewc
+  - ddand
+  - daniel_quinn
+  MSK:
+  - hhz
+  - pillais
+  - julia.e.rudolph
+  UHN:
+  - hhz
+  - celeste.yu
+  VICC:
+  - hhz
+  - Michele
+  SAGE:
+  - hhz
