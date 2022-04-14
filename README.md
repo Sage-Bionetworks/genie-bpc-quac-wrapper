@@ -6,7 +6,7 @@ Wrapper for the Quality Assurance Checklist to monitor requested upload entities
 
 Clone this repository and navigate to the directory:
 ```
-git clone git@github.com:hhunterzinck/genie-bpc-quac-wrapper.git
+git clone git@github.com:Sage-Bionetworks/genie-bpc-quac-wrapper.git
 cd genie-bpc-quac-wrapper/
 ```
 
