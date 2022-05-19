@@ -114,9 +114,19 @@ for (cohort in config$cohorts) {
           print(glue("      {now(timeOnly = T)}: running {cohort}-{site} ({as.character(synid_file_data)}) {report} report..."))
         }
         
-        # run {report} quality checks
+        # attempt run {report} quality checks
         cmd <- glue("Rscript genie-bpc-quac.R -c {cohort} -s {site} -r {report} -l error -u")
-        system(cmd)
+        out <- tryCatch({
+          tmp <- system(cmd, intern = T)
+        }, error = function(cond) {
+          msg <- send_fail(site = "SAGE")
+          stop()
+          return(NA)
+        }, warning=function(cond) {
+          msg <- send_fail(site = "SAGE")
+          stop()
+          return(NA)
+        })
       }
       
       if (verbose) {
