@@ -158,6 +158,19 @@ get_synapse_user_id <- function(user_name) {
   return(synGetUserProfile(user_name)$ownerId)
 }
 
+send_fail <- function(site = "SAGE") {
+  
+  user_names <- config$contacts[[site]]
+  user_ids <- as.character(sapply(user_names, get_synapse_user_id))
+  
+  subject <- "GENIE BPC QA report generation failed"
+  body <- "This is an automated notice.  The genie-bpc-quac-wrapper detected that genie-bpc-quac.R script failed to run.  Please investigate."
+  
+  res <- synSendMessage(userIds = as.list(user_ids), messageSubject = subject, messageBody = body)
+  
+  return(res)
+}
+
 #' Send email to points of contact for requested reports if issues are detected.  
 send_notification <- function(cohort, site, reports = c("upload", "masking")) {
   
