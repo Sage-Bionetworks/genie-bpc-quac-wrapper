@@ -22,4 +22,4 @@ RUN cp -r ../genie-bpc-quac/* .
 
 RUN R -e 'renv::restore()'
 
-ENTRYPOINT ["Rscript", "genie-bpc-quac-wrapper.R"]
+# ENTRYPOINT ["Rscript", "genie-bpc-quac-wrapper.R"]
