@@ -19,9 +19,15 @@ cohorts:
 - BLADDER
 - BrCa
 - CRC
+- CRC2
 - NSCLC
+- NSCLC2
 - PANC
 - Prostate
+- MELANOMA
+- ESOPHAGO
+- OVARIAN
+- RENAL
 reports:
 - upload
 - masking
