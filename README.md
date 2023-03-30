@@ -18,6 +18,7 @@ docker build -t genie-bpc-quac-wrapper .
 ## Synapse credentials
 
 Cache your Synapse personal access token (PAT) as an environmental variable:
+
 ```
 export SYNAPSE_AUTH_TOKEN={your_personal_access_token_here}
 ```
