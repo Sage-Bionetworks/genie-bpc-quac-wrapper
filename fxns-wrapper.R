@@ -172,7 +172,7 @@ send_fail <- function(site = "SAGE") {
 }
 
 #' Send email to points of contact for requested reports if issues are detected.  
-send_notification <- function(cohort, site, reports = c("upload", "masking")) {
+send_notification <- function(cohort, site) {
   
   user_names <- config$contacts[[site]]
   user_ids <- as.character(sapply(user_names, get_synapse_user_id))
@@ -182,10 +182,13 @@ send_notification <- function(cohort, site, reports = c("upload", "masking")) {
   
   synid_files_cohort <- get_synapse_folder_children(synid_folder_cohort, include_types = list("file"))
   
+  synid_files_site <- synid_files_cohort[grepl(tolower(glue("^{cohort}_{site}")),names(synid_files_cohort))]
+  upload_error_report_name <- tolower(glue("{cohort}_{site}_upload_error.csv"))
+  
   urls <- c()
   n_issues <- c()
-  for (report in reports) {
-    synid_file_report <- as.character(synid_files_cohort[tolower(glue("{cohort}_{site}_{report}_error.csv"))])
+  for (report in names(synid_files_site)) {
+    synid_file_report <- as.character(synid_files_site[report])
     urls[report] <- glue("https://www.synapse.org/#!Synapse:{synid_file_report}")
     n_issues[report] <- synGetAnnotations(synGet(synid_file_report))$issueCount[[1]]
   }
@@ -196,13 +199,24 @@ send_notification <- function(cohort, site, reports = c("upload", "masking")) {
   if (sum(n_issues) == 0) {
     body <- glue("{body}\n\nAll quality assurance (QA) checks passed. No fixes are required.")
   } else {
-    body <- glue("{body}\n\nNew quality assurance (QA) report(s) available:")
-    for(report in reports) {
-      if (n_issues[report] > 0) {
+    body <- glue("{body}\nNew quality assurance (QA) report(s) available:")
+    if (n_issues[upload_error_report_name] > 0) {
+      body <- glue("{body}\nREQUIRED:")
+      body <- glue("{body}\n- {upload_error_report_name} ({n_issues[upload_error_report_name]} issues): {urls[upload_error_report_name]}")
+    }else{
+      body <- glue("{body}\n\nQuality assurance (QA) checks passed for the uploaded file. No fixes are required.")
+    }
+    body <- glue("{body}\nOPTIONAL:")
+    for(report in names(synid_files_site)) {
+      if (report != upload_error_report_name) {
         body <- glue("{body}\n- {report} ({n_issues[report]} issues): {urls[report]}")
       }
     }
     body <- glue("{body}\n\nPlease correct the issues and re-upload. Respond to this email with any questions.")
+    body <- glue("{body}\n\nNOTE:")
+    body <- glue("{body}\n- Address the issues in the required report at every upload")
+    body <- glue("{body}\n- Address the issues in the masking error report at the Round 4 upload")
+    body <- glue("{body}\n- Warning reports are for our record and your reference")
   }
   body <- glue("{body}\n\nSincerely,\nSage Bionetworks")
   
