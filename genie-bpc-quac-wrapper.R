@@ -59,7 +59,7 @@ status <- synLogin()
 
 # parameters
 config <- read_yaml("config-wrapper.yaml")
-reports <- config$report
+reports <- config$reports
 
 # parameter overview
 if (verbose) {
@@ -134,7 +134,7 @@ for (cohort in config$cohorts) {
       }
       
       # send notification
-      msg <- send_notification(cohort, site, reports = reports)
+      msg <- send_notification(cohort, site)
     } else {
       if (verbose) {
         print(glue("      {now(timeOnly = T)}:  {cohort}-{site} ({as.character(synid_file_data)}) not modified...skipping."))
