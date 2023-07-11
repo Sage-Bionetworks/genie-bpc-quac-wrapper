@@ -59,7 +59,7 @@ status <- synLogin()
 
 # parameters
 config <- read_yaml("config-wrapper.yaml")
-reports <- config$report
+reports <- config$reports
 
 # parameter overview
 if (verbose) {
@@ -114,8 +114,22 @@ for (cohort in config$cohorts) {
           print(glue("      {now(timeOnly = T)}: running {cohort}-{site} ({as.character(synid_file_data)}) {report} report..."))
         }
         
-        # attempt run {report} quality checks
+        # attempt run {report} error level quality checks
         cmd <- glue("Rscript genie-bpc-quac.R -c {cohort} -s {site} -r {report} -l error -u")
+        out <- tryCatch({
+          tmp <- system(cmd, intern = T)
+        }, error = function(cond) {
+          msg <- send_fail(site = "SAGE")
+          stop()
+          return(NA)
+        }, warning=function(cond) {
+          msg <- send_fail(site = "SAGE")
+          stop()
+          return(NA)
+        })
+        
+        # attempt run {report} warning level quality checks
+        cmd <- glue("Rscript genie-bpc-quac.R -c {cohort} -s {site} -r {report} -l warning -u")
         out <- tryCatch({
           tmp <- system(cmd, intern = T)
         }, error = function(cond) {
@@ -134,7 +148,7 @@ for (cohort in config$cohorts) {
       }
       
       # send notification
-      msg <- send_notification(cohort, site, reports = reports)
+      msg <- send_notification(cohort, site)
     } else {
       if (verbose) {
         print(glue("      {now(timeOnly = T)}:  {cohort}-{site} ({as.character(synid_file_data)}) not modified...skipping."))
