@@ -1,5 +1,8 @@
 # GENIE BPC Quality Assurance Checklist Wrapper
 
+[![automated](https://img.shields.io/docker/cloud/automated/sagebionetworks/genie-bpc-quac-wrapper)](https://hub.docker.com/r/sagebionetworks/genie-bpc-quac-wrapper)
+![status](https://img.shields.io/docker/cloud/build/sagebionetworks/genie-bpc-quac-wrapper)
+
 Wrapper for the Quality Assurance Checklist to monitor requested upload entities and notify points of contact upon modification and error report production.  Designed to be run with Service Catalog scheduled jobs.  
 
 ## Installation
