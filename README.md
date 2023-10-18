@@ -45,9 +45,14 @@ optional arguments:
                         Time unit (default: day)
   -t, --testing         Run on synthetic test uploads
   -d, --verbose         Verbose reporting on script progress to the user
+
+
 ```
 
 Example run: 
 ```
-docker run -e SYNAPSE_AUTH_TOKEN=$SYNAPSE_AUTH_TOKEN --rm genie-bpc-quac-wrapper -d 
+docker run -e SYNAPSE_AUTH_TOKEN=$SYNAPSE_AUTH_TOKEN --rm genie-bpc-quac-wrapper -d
+
+## Notes
+The associated Docker image needs to be triggered manually by a commit when genie-bpc-quac repo is updated
 ```
