@@ -56,4 +56,4 @@ docker run -e SYNAPSE_AUTH_TOKEN=$SYNAPSE_AUTH_TOKEN --rm genie-bpc-quac-wrapper
 ```
 
 ## Notes
-The associated Docker image needs to be triggered manually by a commit when genie-bpc-quac repo is updated
+The associated Docker image needs to be triggered manually by a pull request when genie-bpc-quac repo is updated
