@@ -46,7 +46,6 @@ optional arguments:
   -t, --testing         Run on synthetic test uploads
   -d, --verbose         Verbose reporting on script progress to the user
 
-
 ```
 
 Example run: 
