@@ -67,22 +67,6 @@ contacts:
   - Mi31953
   - Michele
   - nonnapotter
-  SAGE:
-  - xindi.guo
-  - thomas.yu
-  - chelsea.nayan
-  DUKE:
-  - thomas.yu
-  - xindi.guo
-  - chelsea.nayan
-  - alyssa.acebedo
-  - Mi31953
-  PROV:
-  - thomas.yu
-  - xindi.guo
-  - chelsea.nayan
-  - alyssa.acebedo
-  - Mi31953
   UCSF:
   - thomas.yu
   - xindi.guo
@@ -91,3 +75,31 @@ contacts:
   - Mi31953
   - mturski18
   - elanaweingord
+  SAGE:
+  - xindi.guo
+  - thomas.yu
+  - chelsea.nayan
+  PROV: # Need contacts
+  - thomas.yu
+  - xindi.guo
+  - chelsea.nayan
+  - alyssa.acebedo
+  - Mi31953
+  WAKE: # Need contacts
+  - thomas.yu
+  - xindi.guo
+  - chelsea.nayan
+  - alyssa.acebedo
+  - Mi31953
+  JHU: # Need contacts
+  - thomas.yu
+  - xindi.guo
+  - chelsea.nayan
+  - alyssa.acebedo
+  - Mi31953
+  VHIO: # Need contacts
+  - thomas.yu
+  - xindi.guo
+  - chelsea.nayan
+  - alyssa.acebedo
+  - Mi31953
