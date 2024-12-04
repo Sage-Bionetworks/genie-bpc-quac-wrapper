@@ -79,12 +79,13 @@ contacts:
   - xindi.guo
   - thomas.yu
   - chelsea.nayan
-  PROV: # Need contacts
+  PROV:
   - thomas.yu
   - xindi.guo
   - chelsea.nayan
   - alyssa.acebedo
   - Mi31953
+  - shwethapindikuri
   WAKE: # Need contacts
   - thomas.yu
   - xindi.guo
@@ -97,9 +98,10 @@ contacts:
   - chelsea.nayan
   - alyssa.acebedo
   - Mi31953
-  VHIO: # Need contacts
+  VHIO:
   - thomas.yu
   - xindi.guo
   - chelsea.nayan
   - alyssa.acebedo
   - Mi31953
+  - apedrola
