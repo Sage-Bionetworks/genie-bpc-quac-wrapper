@@ -85,9 +85,9 @@ synLogin <- function(auth = NA, silent = T) {
 
 #' Determine if a Synapse entity has been modified within a certain time in the past.
 #' 
-#' @param synapse_id Synape ID of entity
-#' @param value Integer specifying the number of time units
-#' @param unit String specifying time unit
+#' @param synapse_id (string) Synapse ID of entity
+#' @param value (double) specifying the number of time units
+#' @param unit (string) specifying time unit
 #' @return TRUE if entity has been modified in value unit from current time; otherwise, false
 is_synapse_entity_modified <- function(synapse_id, value, unit = c("day", "hour")) {
   
