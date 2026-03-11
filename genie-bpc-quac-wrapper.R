@@ -24,7 +24,7 @@ waitifnot <- function(cond, msg) {
 # user input ----------------------------
 
 parser <- ArgumentParser()
-parser$add_argument("-v", "--value", dest = "value", type = "double", default = 1.0,
+parser$add_argument("-v", "--value", dest = "value", type = "integer", default = 1,
                     help = "Number of time units (default: 1)", required = F)
 parser$add_argument("-u", "--unit", dest = "unit", type = "character", choices = choices_unit, default = choices_unit[1],
                     help = glue("Time unit (default: {choices_unit[1]})"), required = F)
